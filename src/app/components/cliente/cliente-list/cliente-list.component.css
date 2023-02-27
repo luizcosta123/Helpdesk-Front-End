@@ -1,0 +1,46 @@
+table {
+  width: 100%;
+}
+
+.container {
+  margin: 1.5rem 1rem;
+}
+
+.titulo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.button {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: #34AD4B;
+}
+
+.filter {
+  width: 100%;
+}
+
+.th {
+  text-align: center;
+}
+
+.edit {
+  color: #673ab7;
+}
+
+.edit:active {
+  color: #ffd740;
+}
+
+.delete {
+  color: #ff1f1f;
+}
+
+.delete:active {
+  color: #bd1818;
+}

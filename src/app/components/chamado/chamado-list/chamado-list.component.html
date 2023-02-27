@@ -1,0 +1,98 @@
+<div class="container">
+  <h1 class="titulo">Lista de Chamados</h1>
+
+  <button
+    routerLink="create"
+    class="button mat-elevation-z8"
+    mat-raised-button
+    color="primary"
+  >
+    Adicionar Chamado
+  </button>
+
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Digite o filtro buscado"
+      #input
+    />
+  </mat-form-field>
+
+  <mat-radio-group class="radio-group" color="primary">
+    <mat-radio-button (click)="orderByStatus('0')" value="0">Aberto</mat-radio-button>
+    <mat-radio-button (click)="orderByStatus('1')" value="1">Andamento</mat-radio-button>
+    <mat-radio-button (click)="orderByStatus('2')" value="2">Encerrado</mat-radio-button>
+  </mat-radio-group>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th class="th" mat-header-cell *matHeaderCellDef>Id</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataAbertura">
+        <th class="th"  mat-header-cell *matHeaderCellDef>Abertura</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.dataAbertura }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataFechamento">
+        <th class="th" mat-header-cell *matHeaderCellDef>Fechamento</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.dataFechamento }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="prioridade">
+        <th class="th" mat-header-cell *matHeaderCellDef>Prioridade</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ retornaPrioridade(element.prioridade) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th class="th" mat-header-cell *matHeaderCellDef>Status</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ retornaStatus(element.status) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="titulo">
+        <th class="th" mat-header-cell *matHeaderCellDef>Título</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeTecnico">
+        <th class="th" mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Técnico</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.nomeTecnico}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeCliente">
+        <th class="th" mat-header-cell *matHeaderCellDef>Cliente</th>
+        <td class="th" mat-cell *matCellDef="let element">{{ element.nomeCliente }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="read/{{ element.id }}">
+            <i class="material-icons read">
+              search
+            </i>
+          </a>
+          <a routerLink="update/{{ element.id }}">
+            <i class="material-icons edit">
+              edit
+            </i>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

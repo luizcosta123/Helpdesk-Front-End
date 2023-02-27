@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #FFFFFF;
+  background: #673ab7;
+  margin-top: 1rem;
+  padding: 1rem 10%;
+  border-radius: 0rem 0rem 1rem 1rem;
+}

@@ -1,0 +1,92 @@
+<div class="container mat-elevation-z8">
+  <form class="form">
+    <h1 class="titulo fullWitdh">Atualizar Técnico</h1>
+
+    <img
+      class="imagemCadastro fullWidth"
+      src="../../../../assets/img/Image-Cadastro.svg"
+      alt="Imagem de Cadastro"
+    />
+
+    <section class="section">
+      <mat-checkbox (click)="addPerfil(0)" class="checkbox"
+        >Administrador</mat-checkbox
+      >
+      <mat-checkbox [checked]="true" (click)="addPerfil(1)" class="checkbox"
+        >Cliente</mat-checkbox
+      >
+      <mat-checkbox (click)="addPerfil(2)" class="checkbox"
+        >Técnico</mat-checkbox
+      >
+    </section>
+
+    <mat-form-field class="fullWidth" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input
+        [(ngModel)]="cliente.nome"
+        name="nome"
+        [formControl]="nome"
+        required
+        matInput
+        placeholder="Digite seu Nome"
+      />
+      <mat-icon class="icon" matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input
+        [(ngModel)]="cliente.cpf"
+        name="cpf"
+        [formControl]="cpf"
+        [mask]="'000.000.000-00'"
+        required
+        matInput
+        placeholder="xxx.xxx.xxx-xx"
+      />
+      <mat-icon class="icon" matSuffix>badge</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        [(ngModel)]="cliente.email"
+        name="email"
+        [formControl]="email"
+        required
+        type="email"
+        matInput
+        placeholder="email@gmail.com"
+      />
+      <mat-icon class="icon" matSuffix>mail</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input
+        [(ngModel)]="cliente.senha"
+        name="senha"
+        [formControl]="senha"
+        required
+        type="password"
+        matInput
+        placeholder="*********"
+      />
+      <mat-icon class="icon" matSuffix>password</mat-icon>
+    </mat-form-field>
+
+    <button
+      (click)="update()"
+      [disabled]="!validaCampos()"
+      class="fullWidth button"
+      mat-raised-button
+      color="primary"
+    >
+      Atualizar
+    </button>
+
+    <button routerLink="../../" class="fullWidth" mat-flat-button color="warn">
+      Cancelar
+    </button>
+  </form>
+</div>

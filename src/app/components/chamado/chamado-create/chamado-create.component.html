@@ -1,0 +1,118 @@
+<div class="container mat-elevation-z8">
+  <h1 class="titulo">Criando Chamado</h1>
+
+  <img
+    class="imagemCadastro fullWidth"
+    src="../../../../assets/img/Image-Cadastro.svg"
+    alt="Imagem de cadastro"
+  />
+
+  <form>
+    <mat-form-field class="fullWidth" appearance="fill">
+      <mat-label>Título</mat-label>
+      <input
+        [(ngModel)]="chamado.titulo"
+        name="titulo"
+        [formControl]="titulo"
+        required
+        matInput
+        placeholder="Título do chamado"
+      />
+    </mat-form-field>
+
+    <div class="status-prioridade">
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select
+          [formControl]="status"
+          required
+          [(ngModel)]="chamado.status"
+          name="status"
+        >
+          <mat-option value="0">Aberto</mat-option>
+          <mat-option value="1">Em andamento</mat-option>
+          <mat-option value="2">Encerrado</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Prioridade</mat-label>
+        <mat-select
+          [formControl]="prioridade"
+          required
+          [(ngModel)]="chamado.prioridade"
+          name="prioridade"
+        >
+          <mat-option value="0">Baixa</mat-option>
+          <mat-option value="1">Média</mat-option>
+          <mat-option value="2">Alta</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="tecnico">
+      <mat-form-field class="fullWidth" appearance="fill">
+        <mat-label>Técnico</mat-label>
+        <mat-select
+          [formControl]="tecnico"
+          required
+          [(ngModel)]="chamado.tecnico"
+          name="tecnico"
+        >
+          <mat-option
+            *ngFor="let tecnico of tecnicos"
+            value="{{ tecnico.id }}"
+            >{{ tecnico.nome }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="cliente">
+      <mat-form-field class="fullWidth" appearance="fill">
+        <mat-label>Cliente</mat-label>
+        <mat-select
+          [formControl]="cliente"
+          required
+          [(ngModel)]="chamado.cliente"
+          name="cliente"
+        >
+          <mat-option
+            *ngFor="let cliente of clientes"
+            value="{{ cliente.id }}"
+            >{{ cliente.nome }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <form class="form">
+      <mat-form-field class="fullWidth" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <textarea
+          [(ngModel)]="chamado.observacoes"
+          name="observacoes"
+          [formControl]="observacoes"
+          required
+          class="observacoes"
+          matInput
+          placeholder="Digite uma descrição"
+        ></textarea>
+      </mat-form-field>
+    </form>
+
+    <button
+      class="fullWidth button"
+      [disabled]="!validaCampos()"
+      (click)="create()"
+      mat-raised-button
+      color="primary"
+    >
+      Cadastrar
+    </button>
+
+    <button routerLink="../" class="fullWidth" mat-flat-button color="warn">
+      Cancelar
+    </button>
+  </form>
+</div>

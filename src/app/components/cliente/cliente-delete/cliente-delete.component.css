@@ -1,0 +1,39 @@
+.container {
+  width: 30rem;
+  margin: auto;
+  margin-bottom: 5rem;
+  padding: 1rem 1rem 3rem 1rem;
+  border-radius: 1rem;
+}
+
+.titulo {
+  text-align: center;
+}
+
+.imagemCadastro {
+  height: 8rem;
+  margin: auto;
+}
+
+.icon {
+  color: #683ab7;
+  opacity: 0.9;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.button {
+  margin-bottom: 1rem;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #ff1f1f;
+}
+
+.fullWidth {
+  width: 100%;
+}
